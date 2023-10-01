@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  currency_label: MyString
+  price: 9.99
+  converted_price: 9.99
+  product: one
+
+two:
+  currency_label: MyString
+  price: 9.99
+  converted_price: 9.99
+  product: two
