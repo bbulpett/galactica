@@ -1,0 +1,27 @@
+[
+  {
+    "from_currency": "USD",
+    "to_currency": "EUR",
+    "exchange_rate": 1.18
+  },
+  {
+    "from_currency": "USD",
+    "to_currency": "GBP",
+    "exchange_rate": 1.38
+  },
+  {
+    "from_currency": "USD",
+    "to_currency": "INR",
+    "exchange_rate": 74.15
+  },
+  {
+    "from_currency": "USD",
+    "to_currency": "JPY",
+    "exchange_rate": 110.50
+  },
+  {
+    "from_currency": "USD",
+    "to_currency": "SAR",
+    "exchange_rate": 3.75
+  }
+]

@@ -14,14 +14,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_01_185642) do
   create_table "currency_rates", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "from_currency"
     t.string "to_currency"
-    t.decimal "rate", precision: 10
+    t.decimal "rate", precision: 10, scale: 4
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "product_variants", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "currency_label"
-    t.decimal "price", precision: 10
+    t.decimal "price", precision: 10, scale: 2
     t.decimal "converted_price", precision: 10
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false

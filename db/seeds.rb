@@ -6,23 +6,38 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-CURRENCIES = %w[EUR GBP JPY SAR USD]
+CURRENCY_RATE_SEEDS =
+  JSON.parse(File.read('data/exchange_rate_seeds.json')).freeze
 NUM_PRODUCTS = 5
+VARIANT_CURRENCY_LABELS =
+  (CURRENCY_RATE_SEEDS.pluck('to_currency') + ['USD']).freeze
 
 # Create products
 NUM_PRODUCTS.times do
   Product.create!(
-    title: Faker::Books::Dune.title
+    title: Faker::Book.unique(max_retries = 10_000).title,
   )
 end
 
 # Create one product variant per currency for each product
 Product.all.each do |product|
-  CURRENCIES.each do |currency|
+  VARIANT_CURRENCY_LABELS.each do |currency_label|
     product.product_variants.create!(
-      currency_label: currency,
-      price: Faker::Number.decimal(l_digits: 2),
+      currency_label: currency_label,
+      price: Faker::Number.decimal(
+        l_digits: rand(1..3),
+        r_digits: 2
+      ),
       converted_price: nil
     )
   end
+end
+
+# Create currency rates
+CURRENCY_RATE_SEEDS.each do |rate|
+  CurrencyRate.create!(
+    from_currency: rate['from_currency'],
+    to_currency: rate['to_currency'],
+    rate: rate['exchange_rate']
+  )
 end
