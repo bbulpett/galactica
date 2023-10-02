@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class CurrencyImporter
   RATES_KEY = ENV.fetch('EXCHANGE_RATE_API_KEY').freeze
-  RATES_URL = 'http://api.exchangeratesapi.io/v1/latest?base=USD'.freeze
+  RATES_URL = 'http://api.exchangeratesapi.io/v1/latest?base=USD'
   TO_CURRENCY_SYMBOLS = %w[CAD EUR GBP INR JPY SAR].freeze
 
   def initialize; end
@@ -29,7 +31,7 @@ class CurrencyImporter
 
   def update_exchange_rates(exchange_rates)
     exchange_rates.each do |currency_label, rate|
-      CurrencyRate.where(to_currency: currency_label).update(rate: rate)
+      CurrencyRate.where(to_currency: currency_label).update(rate:)
     end
   end
 
