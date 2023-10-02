@@ -1,0 +1,10 @@
+# Rubocop overrides for the project
+
+AllCops:
+  Exclude:
+    - './bin/bundle'
+    - './vendor/**/*'
+  NewCops: disable
+
+Documentation:
+  Enabled: false
