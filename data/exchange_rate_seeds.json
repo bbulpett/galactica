@@ -1,6 +1,11 @@
 [
   {
     "from_currency": "USD",
+    "to_currency": "CAD",
+    "exchange_rate": 1.36
+  },
+  {
+    "from_currency": "USD",
     "to_currency": "EUR",
     "exchange_rate": 1.18
   },
