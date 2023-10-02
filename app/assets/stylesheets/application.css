@@ -13,3 +13,69 @@
  *= require_tree .
  *= require_self
  */
+
+html, body {
+  min-height: 100vh;
+  overflow: auto;
+}
+
+body {
+  padding: 10px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background: linear-gradient(183deg, #b1d9cf, #f0ecb6, #f0d5b6, #b6edf0, #f2c3e1);
+  background-size: 1000% 1000%;
+  -webkit-animation: AnimationName 36s ease infinite;
+  -moz-animation: AnimationName 36s ease infinite;
+  -o-animation: AnimationName 36s ease infinite;
+  animation: AnimationName 36s ease infinite;
+}
+
+h1 {
+  font-size: 2.75rem;
+  text-shadow: 2px 2px 2px #000000;
+}
+
+p {
+  font-size: 1.25rem;
+}
+
+button {
+  padding: 15px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+button a {
+  color: black;
+  font-size: 1.125rem;
+  text-decoration: none;
+}
+
+.h1-left {
+  color: darkorange;
+}
+
+.h1-right {
+  color: blue;
+}
+
+@-webkit-keyframes AnimationName {
+  0%{background-position:78% 0%}
+  50%{background-position:23% 100%}
+  100%{background-position:78% 0%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:78% 0%}
+  50%{background-position:23% 100%}
+  100%{background-position:78% 0%}
+}
+@-o-keyframes AnimationName {
+  0%{background-position:78% 0%}
+  50%{background-position:23% 100%}
+  100%{background-position:78% 0%}
+}
+@keyframes AnimationName {
+  0%{background-position:78% 0%}
+  50%{background-position:23% 100%}
+  100%{background-position:78% 0%}
+}
