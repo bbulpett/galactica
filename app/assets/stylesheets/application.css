@@ -21,7 +21,7 @@ html, body {
 
 body {
   padding: 10px;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: Papyrus, fantasy, sans-serif;
   background: linear-gradient(183deg, #b1d9cf, #f0ecb6, #f0d5b6, #b6edf0, #f2c3e1);
   background-size: 1000% 1000%;
   -webkit-animation: AnimationName 36s ease infinite;
@@ -35,6 +35,14 @@ h1 {
   text-shadow: 2px 2px 2px #000000;
 }
 
+.h1-left {
+  color: darkorange;
+}
+
+.h1-right {
+  color: blue;
+}
+
 p {
   font-size: 1.25rem;
 }
@@ -43,6 +51,7 @@ button {
   padding: 15px;
   border-radius: 10px;
   background-color: white;
+  z-index: 9999;
 }
 
 button a {
@@ -51,12 +60,30 @@ button a {
   text-decoration: none;
 }
 
-.h1-left {
-  color: darkorange;
+table {
+  border: 5px solid black;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-.h1-right {
-  color: blue;
+th, td {
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+}
+
+th {
+  background-color: fuchsia;
+  border-bottom: 2px solid black;
+  color: white;
+}
+
+.numeric-cell {
+  font-family:'Courier New', Courier, monospace;
+}
+
+.rjust-cell {
+  text-align: right;
 }
 
 @-webkit-keyframes AnimationName {

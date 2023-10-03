@@ -44,7 +44,10 @@ class CurrencyImporter
   end
 
   def converted_price(product_variant)
-    product_variant.price * exchange_rate(product_variant.currency_label)
+    p = product_variant.price * exchange_rate(product_variant.currency_label)
+    rounding_factor = p.currency_label == 'JPY' ? 0 : 2
+
+    p.round(rounding_factor)
   end
 
   def exchange_rate(currency_label)

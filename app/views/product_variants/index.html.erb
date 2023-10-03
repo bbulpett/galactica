@@ -1,3 +1,23 @@
 <h1>
   <span class='h1-left'>Product</span> <span class='h1-right'>Variants</span>
 </h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Currency</th>
+    <th>Base Price</th>
+    <th>Converted Price</th>
+    <th>Last Updated</th>
+  </tr>
+
+  <% @product_variants.each do |product_variant| %>
+    <tr>
+      <td><%= product_variant.product.title %></td>
+      <td><%= product_variant.currency_label %></td>
+      <td class='numeric-cell rjust-cell'><%= product_variant.price %></td>
+      <td><%= product_variant.converted_price || "NULL" %></td>
+      <td class='numeric-cell'><%= variant_last_updated(product_variant) %></td>
+    </tr>
+  <% end %>
+</table>

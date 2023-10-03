@@ -1,3 +1,5 @@
 class ProductVariantsController < ApplicationController
-  def index; end
+  def index
+    @product_variants = ProductVariant.all
+  end
 end
