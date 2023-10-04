@@ -12,7 +12,16 @@ class CurrencyImporter
     # update_product_variant_prices_iteratively
 
     # CHAD APPROACH
-    update_product_variant_prices_en_masse
+    # update_product_variant_prices_en_masse
+
+    # GIGCHAD APPROACH
+    # Let the database do the work for us by using a trigger
+
+    # TURBOCHAD APPROACH
+    # Use a trigger on a stored procedure to update the converted prices
+
+    # ULTRACHAD APPROACH (*️⃣ I don't know how to do this in MySQL)
+    # Use a trigger and a materialized view to update the converted prices
   end
 
   private
