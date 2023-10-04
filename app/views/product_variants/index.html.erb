@@ -1,23 +1,50 @@
-<h1>
-  <span class='h1-left'>Product</span> <span class='h1-right'>Variants</span>
-</h1>
+<div style="width: 100%;">
+  <div style="float: left;">
+    <h1>
+      <span class='h1-left'>Critical</span>
+      <span class='h1-right'>Resource</span>
+    </h1>
+  </div>
+  <div style="float: right; margin-top: 20px;">
+    <button>
+      <%= link_to 'Home Page', root_path %>
+    </button>
+  </div>
+</div>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Currency</th>
-    <th>Base Price</th>
-    <th>Converted Price</th>
-    <th>Last Updated</th>
-  </tr>
-
-  <% @product_variants.each do |product_variant| %>
+<div>
+  <table>
+    <caption>Product Variants</caption>
     <tr>
-      <td><%= product_variant.product.title %></td>
-      <td><%= product_variant.currency_label %></td>
-      <td class='numeric-cell rjust-cell'><%= product_variant.price %></td>
-      <td><%= product_variant.converted_price || "NULL" %></td>
-      <td class='numeric-cell'><%= variant_last_updated(product_variant) %></td>
+      <th>Title</th>
+      <th>Currency</th>
+      <th>Base Price</th>
+      <th>Converted Price</th>
+      <th>Last Updated</th>
     </tr>
-  <% end %>
-</table>
+
+    <% @product_variants.first(50).each do |product_variant| %>
+      <tr>
+        <td><%= product_variant.product.title %></td>
+        <td><%= product_variant.currency_label %></td>
+        <td class='rjust-cell numeric-cell'>
+          <%=
+            price_for_display(
+              currency: product_variant.currency_label,
+              price: product_variant.price
+            )
+          %>
+        </td>
+        <td class='rjust-cell numeric-cell'>
+          <%=
+            price_for_display(
+              currency: product_variant.currency_label,
+              price: product_variant.converted_price
+            )
+          %>
+        </td>
+        <td class='numeric-cell'><%= variant_last_updated(product_variant) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

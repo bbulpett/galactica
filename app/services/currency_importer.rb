@@ -1,16 +1,12 @@
-# frozen_string_literal: true
-
 class CurrencyImporter
   RATES_KEY = ENV.fetch('EXCHANGE_RATE_API_KEY').freeze
-  RATES_URL = 'http://api.exchangeratesapi.io/v1/latest?base=USD'
-  TO_CURRENCY_SYMBOLS = %w[CAD EUR GBP INR JPY SAR].freeze
+  RATES_URL = 'http://api.exchangeratesapi.io/v1/latest?base=USD'.freeze
+  TO_CURRENCY_SYMBOLS = %w[CAD EUR GBP INR JPY SAR USD].freeze
 
   def initialize; end
 
   def run
-    exchange_rates = fetch_exchange_rates
-
-    update_exchange_rates(exchange_rates)
+    update_exchange_rates(exchange_rates_hash)
 
     # Iterate through all product variants and update their converted prices 🙄
     update_product_variant_prices
@@ -18,7 +14,7 @@ class CurrencyImporter
 
   private
 
-  def fetch_exchange_rates
+  def exchange_rates_hash
     JSON.parse(exchange_rates_api_response.body)['rates']
   end
 
@@ -31,7 +27,7 @@ class CurrencyImporter
 
   def update_exchange_rates(exchange_rates)
     exchange_rates.each do |currency_label, rate|
-      CurrencyRate.where(to_currency: currency_label).update(rate:)
+      CurrencyRate.where(to_currency: currency_label).update(rate: rate)
     end
   end
 
@@ -44,13 +40,19 @@ class CurrencyImporter
   end
 
   def converted_price(product_variant)
-    p = product_variant.price * exchange_rate(product_variant.currency_label)
-    rounding_factor = p.currency_label == 'JPY' ? 0 : 2
+    currency_exchange_rate = exchange_rate(product_variant.currency_label)
+    currency_precision = product_variant.currency_label == 'JPY' ? 0 : 2
 
-    p.round(rounding_factor)
+    return if currency_exchange_rate.nil?
+
+    price = (product_variant.price * currency_exchange_rate).to_f
+
+    price.round(currency_precision)
   end
 
   def exchange_rate(currency_label)
-    CurrencyRate.find_by(to_currency: currency_label).rate
+    return 1 if currency_label == 'USD'
+
+    CurrencyRate.find_by(to_currency: currency_label)&.rate
   end
 end

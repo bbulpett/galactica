@@ -10,14 +10,14 @@
 
 CURRENCY_RATE_SEEDS =
   JSON.parse(File.read('data/exchange_rate_seeds.json')).freeze
-NUM_PRODUCTS = 5
+NUM_PRODUCTS = 10_000
 VARIANT_CURRENCY_LABELS =
   (CURRENCY_RATE_SEEDS.pluck('to_currency') + ['USD']).freeze
 
 # Create products
 NUM_PRODUCTS.times do
   Product.create!(
-    title: Faker::Book.unique(10_000).title
+    title: Faker::Book.title
   )
 end
 
