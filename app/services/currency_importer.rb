@@ -8,8 +8,11 @@ class CurrencyImporter
   def run
     update_exchange_rates(exchange_rates_hash)
 
-    # Iterate through all product variants and update their converted prices 🙄
-    update_product_variant_prices
+    # BRUTE FORCE APPROACH
+    # update_product_variant_prices_iteratively
+
+    # CHAD APPROACH
+    update_product_variant_prices_en_masse
   end
 
   private
@@ -31,12 +34,25 @@ class CurrencyImporter
     end
   end
 
-  def update_product_variant_prices
+  # Iterate through all product variants and update their converted prices 🙄
+  def update_product_variant_prices_iteratively
     ProductVariant.all.each do |product_variant|
       product_variant.update!(
         converted_price: converted_price(product_variant)
       )
     end
+  end
+
+  # Do a mass SQL update of all product variants and update converted prices 🤩
+  def update_product_variant_prices_en_masse
+    ActiveRecord::Base.connection.execute(
+      "UPDATE product_variants
+       SET converted_price = price * (
+         SELECT rate FROM currency_rates
+         WHERE currency_rates.to_currency = product_variants.currency_label
+       ),
+         updated_at = NOW();"
+    )
   end
 
   def converted_price(product_variant)
