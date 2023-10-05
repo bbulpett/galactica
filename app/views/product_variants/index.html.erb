@@ -23,7 +23,7 @@
       <th>Last Updated</th>
     </tr>
 
-    <% @product_variants.first(50).each do |product_variant| %>
+    <% @product_variants.first(1_000).each do |product_variant| %>
       <tr>
         <td><%= product_variant.product.title %></td>
         <td><%= product_variant.currency_label %></td>

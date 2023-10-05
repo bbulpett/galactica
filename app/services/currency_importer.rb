@@ -20,7 +20,7 @@ class CurrencyImporter
     # TURBOCHAD APPROACH
     # Use a trigger on a stored procedure to update the converted prices
 
-    # ULTRACHAD APPROACH (*️⃣ I don't know how to do this in MySQL)
+    # ULTRACHAD APPROACH (*️⃣ I don't know/remember how to do this in MySQL)
     # Use a trigger and a materialized view to update the converted prices
   end
 
