@@ -1,6 +1,6 @@
 module ProductVariantsHelper
   def variant_last_updated(product_variant)
-    product_variant.updated_at.strftime("%e %b %y -- %H:%M:%S %Z")
+    product_variant.updated_at.strftime("%e %b %y -- %H:%M:%S")
   end
 
   def price_for_display(currency:, price:)
