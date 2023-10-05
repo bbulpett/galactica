@@ -35,6 +35,13 @@ Product.all.each do |product|
   end
 end
 
+# Create currency rate record for USD
+CurrencyRate.create!(
+  from_currency: 'USD',
+  to_currency: 'USD',
+  rate: 1.00
+)
+
 # Create currency rates
 CURRENCY_RATE_SEEDS.each do |rate|
   CurrencyRate.create!(

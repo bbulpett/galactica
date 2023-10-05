@@ -8,4 +8,8 @@ module ProductVariantsHelper
 
     currency == 'JPY' ? price.to_i : price
   end
+
+  def list_limit
+    100
+  end
 end

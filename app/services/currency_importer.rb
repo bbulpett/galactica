@@ -17,7 +17,7 @@ class CurrencyImporter
     # GIGCHAD APPROACH
     # Let the database do the work for us by using a trigger
 
-    # TURBOCHAD APPROACH
+    # TURBOCHAD APPROACH 😎
     # Use a trigger on a stored procedure to update the converted prices
 
     # ULTRACHAD APPROACH (*️⃣ I don't know/remember how to do this in MySQL)
@@ -76,7 +76,7 @@ class CurrencyImporter
   end
 
   def exchange_rate(currency_label)
-    return 1 if currency_label == 'USD'
+    return 1.00 if currency_label == 'USD'
 
     CurrencyRate.find_by(to_currency: currency_label)&.rate
   end

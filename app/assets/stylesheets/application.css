@@ -24,10 +24,10 @@ body {
   font-family: Papyrus, fantasy, sans-serif;
   background: linear-gradient(183deg, #b1d9cf, #f0ecb6, #f0d5b6, #b6edf0, #f2c3e1);
   background-size: 1000% 1000%;
-  -webkit-animation: AnimationName 36s ease infinite;
-  -moz-animation: AnimationName 36s ease infinite;
-  -o-animation: AnimationName 36s ease infinite;
-  animation: AnimationName 36s ease infinite;
+  -webkit-animation: AnimationName 18s ease infinite;
+  -moz-animation: AnimationName 18s ease infinite;
+  -o-animation: AnimationName 18s ease infinite;
+  animation: AnimationName 18s ease infinite;
 }
 
 h1 {
@@ -82,6 +82,14 @@ th {
   background-color: fuchsia;
   border-bottom: 2px solid black;
   color: white;
+}
+
+td:first-of-type {
+  width: 16rem;
+}
+
+td:last-of-type {
+  width: 16rem;
 }
 
 .numeric-cell {
