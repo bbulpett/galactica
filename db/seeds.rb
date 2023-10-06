@@ -25,7 +25,7 @@ end
 Product.all.each do |product|
   VARIANT_CURRENCY_LABELS.each do |currency_label|
     product.product_variants.create!(
-      currency_label:,
+      currency_label: currency_label,
       price: Faker::Number.decimal(
         l_digits: rand(1..3),
         r_digits: 2
